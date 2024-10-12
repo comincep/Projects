@@ -13,7 +13,7 @@ function ball:load()
   self.height = 20
   self.width = 20
 
-  self.speed = 15
+  self.speed = 20
   self.XVelocity = 1
   self.YVelocity = 1
 
