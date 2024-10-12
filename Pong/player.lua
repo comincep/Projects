@@ -15,6 +15,15 @@ end
 
 
 function player:update(dt)
+  player:Controls()
+  player:CheckCollision()
+
+
+end
+
+
+function player:Controls()
+  
   if love.keyboard.isDown("down") then
     self.y = self.y + self.speed
   end
@@ -22,6 +31,10 @@ function player:update(dt)
   if love.keyboard.isDown("up") then
     self.y = self.y - self.speed
   end
+end
+
+
+function player:CheckCollision()
 
   if self.y <= 0 then
     self.y = 0
@@ -30,8 +43,6 @@ function player:update(dt)
   if self.y >= love.graphics.getHeight() - self.height then
     self.y = love.graphics.getHeight() - self.height
   end
-
-
 end
 
 
