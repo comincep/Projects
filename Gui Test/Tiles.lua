@@ -11,6 +11,10 @@ function Tiles:load()
     self.x = 50
     self.y = 50
 
+    self.Debounce = false
+
+    self.TilesCount = {}
+
 end
 
 
@@ -22,7 +26,10 @@ end
 
 function Tiles:draw()
 
-Tiles:CreateTiles(5, 5)
+Tiles:CreateTiles(2, 20)
+
+
+love.graphics.print("Tile Count: ".. #self.TilesCount)
 
 end
 
@@ -31,20 +38,27 @@ end
 
 -- FUNCTIONS --
 
-function Tiles:CreateTiles(N1, N2)
+function Tiles:CreateTiles(Width, Height)
 
-  for i = 1, N1 do
+  for i = 1, Width do
 
     rectangle("line", self.x, self.y, self.width, self.height)
     rectangle("line", self.x, self.y, self.width * i, self.height)
 
-    for ii = 1, N2 do
+
+    for ii = 1, Height do
 
       rectangle("line", self.x, self.y, self.width, self.height)
       rectangle("line", self.x, self.y, self.width * i, self.height * ii)
 
+      if self.Debounce == false then
+      table.insert(self.TilesCount, 1)
+      end
+
     end
   end
+
+  self.Debounce = true
 end
 
 
