@@ -2,71 +2,57 @@ _G.love = require("love")
 
 _G.Tiles = {}
 
--- LOVE2D FUNCTIONS --
 
-function Tiles:load()
+function Tiles:Load()
 
-    self.width = 100
-    self.height = 100
-    self.x = 50
-    self.y = 50
+  self.x = 0
+  self.y = 0
 
-    self.Debounce = false
+  self.height = 50
+  self.width = 50
 
-    self.TilesCount = {}
+  self.TileCount = 0
 
-end
-
-
-function Tiles:update(dt)
-
+  self.Debounce = false
 
 end
 
 
-function Tiles:draw()
 
-Tiles:CreateTiles(20, 20)
-
-
-love.graphics.print("Tile Count: ".. #self.TilesCount)
+function Tiles:Update(dt)
 
 end
 
--- END OF LOVE2D FUNCTIONS --
 
 
--- FUNCTIONS --
+function Tiles:Draw()
 
-function Tiles:CreateTiles(Width, Height)
+  Tiles:NewTiles(1, 1)
+  love.graphics.print("Tiles: ".. self.TileCount)
 
-  if Width and Height <= 50 or Width <= 100 or Height <= 100 then
-
-  for i = 1, Width do
-
-    rectangle("line", self.x, self.y, self.width, self.height)
-    rectangle("line", self.x, self.y, self.width * i, self.height)
+end
 
 
-    for ii = 1, Height do
+function Tiles:NewTiles(VerNT, HorNT)
+  for i = 1, VerNT do
+    rectangle("line", self.x * i, self.y, self.width * i, self.height )
 
-      rectangle("line", self.x, self.y, self.width, self.height)
-      rectangle("line", self.x, self.y, self.width * i, self.height * ii)
+    for ii = 1, HorNT do
+      rectangle("line", self.x * i, self.y * ii, self.width * i, self.height * ii)
 
       if self.Debounce == false then
-      table.insert(self.TilesCount, 1)
-        end
+
+        self.TileCount = self.TileCount + 1
       end
     end
   end
-
+  
   self.Debounce = true
 end
 
 
 function rectangle(mode, x, y, width, height)
-  love.graphics.rectangle(mode, x, y, width, height)
+
+love.graphics.rectangle(mode, x, y, width, height)
 
 end
-
--- END OF FUNCTIONS --

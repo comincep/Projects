@@ -2,7 +2,7 @@ _G.love = require("love")
 
 _G.Graphics = {}
 
-function Graphics:draw()
+function Graphics:Draw()
   love.graphics.setBackgroundColor(0, 0, 0)
 
 

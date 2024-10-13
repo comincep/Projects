@@ -5,7 +5,7 @@ require("Graphics")
 
 function love.load()
 
-  Tiles:load()
+  Tiles:Load()
 
 end
 
@@ -13,14 +13,14 @@ end
 
 function love.update(dt)
 
-  Tiles:update(dt)
+  Tiles:Update(dt)
 
 end
 
 
 
 function love.draw()
-  Tiles:draw()
-  Graphics:draw()
+  Tiles:Draw()
+  Graphics:Draw()
 
 end
