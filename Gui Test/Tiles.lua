@@ -26,7 +26,7 @@ end
 
 function Tiles:draw()
 
-Tiles:CreateTiles(2, 20)
+Tiles:CreateTiles(20, 20)
 
 
 love.graphics.print("Tile Count: ".. #self.TilesCount)
@@ -39,6 +39,8 @@ end
 -- FUNCTIONS --
 
 function Tiles:CreateTiles(Width, Height)
+
+  if Width and Height <= 50 or Width <= 100 or Height <= 100 then
 
   for i = 1, Width do
 
@@ -53,8 +55,8 @@ function Tiles:CreateTiles(Width, Height)
 
       if self.Debounce == false then
       table.insert(self.TilesCount, 1)
+        end
       end
-
     end
   end
 
